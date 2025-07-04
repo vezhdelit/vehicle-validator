@@ -1,5 +1,11 @@
 # vehicle-validator
 
+## 0.0.6
+
+### Patch Changes
+
+- 211aad2: added docs
+
 ## 0.0.5
 
 ### Patch Changes
