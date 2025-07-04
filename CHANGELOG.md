@@ -1,5 +1,11 @@
 # vehicle-validator
 
+## 0.0.4
+
+### Patch Changes
+
+- 0b7ff94: npm dist folder issue fix
+
 ## 0.0.3
 
 ### Patch Changes
