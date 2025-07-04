@@ -14,6 +14,57 @@ import { validateLuxemburgPlate } from "./country-validators/lu";
 import type { PlateResult } from "../types/validator";
 import type { VehiclePlate } from "../types/vehicle";
 
+/**
+ * Validates a vehicle license plate for specific European countries.
+ * 
+ * This function validates license plates according to the official formatting rules
+ * of supported European countries. It performs both basic validation (length, format)
+ * and country-specific pattern validation.
+ * 
+ * @param params - The vehicle plate validation parameters
+ * @param params.country - Two-letter ISO country code (lowercase). Supported countries:
+ *   - "at" - Austria
+ *   - "bg" - Bulgaria  
+ *   - "ch" - Switzerland
+ *   - "cz" - Czech Republic
+ *   - "de" - Germany
+ *   - "hr" - Croatia
+ *   - "hu" - Hungary
+ *   - "lu" - Luxembourg
+ *   - "pl" - Poland
+ *   - "ro" - Romania
+ *   - "si" - Slovenia
+ *   - "sk" - Slovakia
+ *   - "ua" - Ukraine
+ * @param params.plate - License plate string (uppercase letters, numbers, and hyphens only)
+ * 
+ * @returns A validation result object containing:
+ *   - `valid`: Boolean indicating if the plate is valid
+ *   - `error`: Error code if validation failed, null if successful
+ *   - `message`: Human-readable error message, null if successful
+ *   - `target`: Field that caused the error ("country" or "plate")
+ * 
+ * @example
+ * ```typescript
+ * // Valid Austrian plate
+ * const result = validateVehiclePlate({ country: "at", plate: "W123AB" });
+ * console.log(result); // { valid: true, error: null, message: null, target: "plate" }
+ * 
+ * // Invalid plate format
+ * const result2 = validateVehiclePlate({ country: "de", plate: "abc123" });
+ * console.log(result2); 
+ * // { valid: false, error: "invalid_plate_format", message: "...", target: "plate" }
+ * 
+ * // Missing country
+ * const result3 = validateVehiclePlate({ country: "", plate: "ABC123" });
+ * console.log(result3);
+ * // { valid: false, error: "missing_params", message: "...", target: "country" }
+ * ```
+ * 
+ * @throws This function does not throw errors, all validation results are returned in the result object
+ * 
+ * @since 0.0.1
+ */
 export function validateVehiclePlate({ country, plate }: VehiclePlate): PlateResult {
     if (!country) {
         return {

@@ -1,6 +1,8 @@
 src
+types
 .changeset
 .github
+.prettierrc
 pnpm-lock.yaml
 tsconfig.json
 vite.config.ts
