@@ -1,3 +1,1 @@
-export const hello = () => {
-    return 'Hello, world!';
-};
+export { validateVehiclePlate } from './vehicle-validator'
